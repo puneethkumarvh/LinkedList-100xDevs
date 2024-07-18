@@ -1,0 +1,38 @@
+// Using Floyd’s Cycle Detection Algorithm.
+//more explanation here https://rite2riddhi.medium.com/decoding-thehare-tortoise-algorithm-for-detecting-loop-in-a-linked-list-in-a-very-simpler-fashion-db491efa22b4
+//Time complexity is O(N) 
+//practiced on leetcode
+//code is as following 
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode hare = head;
+        ListNode tortoise = head;
+        while(hare != null && hare.next!= null){
+            hare = hare.next.next;
+            tortoise= tortoise.next;
+            if(hare == tortoise){
+                hare = head;
+                while(hare != tortoise){
+                    hare = hare.next;
+                    tortoise = tortoise.next;
+                }
+                return hare;
+            }
+        }
+        return null;
+
+        
+    }
+}
