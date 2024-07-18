@@ -1,0 +1,30 @@
+//Practiced on leetcode 
+//Time complexity is O(N) . Space complexity is O(1)
+//code 
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode hear=head;
+        ListNode tortoise = head;
+        while(hear != null && hear.next != null){
+            tortoise = tortoise.next;
+            hear = hear.next.next;
+            if(hear == tortoise){
+                return true;
+            }
+
+        }
+        return false;
+        
+    }
+}
